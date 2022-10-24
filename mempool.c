@@ -14,6 +14,8 @@
  ***********************************************/
 VOS_UINT32 mempool_init(s_mempool_ctrl* ctrl_info) {
 
+    return VOS_OK;
+
 }
 
 /***********************************************
@@ -28,6 +30,8 @@ VOS_UINT32 mempool_init(s_mempool_ctrl* ctrl_info) {
  ***********************************************/
 VOS_VOID* mempool_alloc(s_mempool_ctrl* ctrl_info, VOS_UINT32 size) {
 
+    return VOS_NULL_PTR;
+
 }
 
 /***********************************************
@@ -41,5 +45,7 @@ VOS_VOID* mempool_alloc(s_mempool_ctrl* ctrl_info, VOS_UINT32 size) {
  *     pointer of freed memory, null if failed
  ***********************************************/
 VOS_VOID* mempool_free(s_mempool_ctrl* ctrl_info, VOS_VOID* addr) {
+
+    return VOS_NULL_PTR;
 
 }

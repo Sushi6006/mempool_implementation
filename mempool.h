@@ -4,8 +4,10 @@
 #include <ctype.h>
 
 #define VOS_VOID     void
-#define TRUE         (1)
-#define FALSE        (0)
+#define VOS_OK       (0)
+#define VOS_ERR      (1)
+#define VOS_TRUE     (1)
+#define VOS_FALSE    (0)
 #define VOS_NULL     (0)
 #define VOS_NULL_PTR (0L)
 
@@ -28,6 +30,6 @@ typedef struct mempool_ctrl {
 
 VOS_UINT32 mempool_init(s_mempool_ctrl* ctrl_info);
 VOS_VOID*  mempool_alloc(s_mempool_ctrl* ctrl_info, VOS_UINT32 size);
-VOS_VOID*  mempool_free(s_mempool_ctrl* ctrl_info);
+VOS_VOID*  mempool_free(s_mempool_ctrl* ctrl_info, VOS_VOID* addr);
 
 #endif
