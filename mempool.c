@@ -101,16 +101,22 @@ VOS_VOID mempool_print_queue(s_mempool_queue* queue_info) {
            queue_info->queue_tail_pos);
     printf("QUEUE CONTENT:\n");
     for (int i = 0; i < MEMPOOL_MAX_LEN; i++) {
-        if (queue_info->queue_tail_pos < queue_info->queue_head_pos) {
-            if (!((queue_info->queue_tail_pos <= i) ||
-                  (queue_info->queue_head_pos > i))) {
+        VOS_UINT32 head_pos = queue_info->queue_head_pos;
+        VOS_UINT32 tail_pos = queue_info->queue_tail_pos;
+        if (head_pos < tail_pos) {
+            if ((head_pos <= i) && (i < tail_pos)) {
+                printf("%-15p", queue_info->p_queue[i]);
+            } else {
+                printf("%-15s", "0");
+            }
+        } else if (head_pos > tail_pos) {
+            if ((tail_pos <= i) && (i < head_pos)) {
                 printf("%-15s", "0");
             } else {
                 printf("%-15p", queue_info->p_queue[i]);
             }
         } else {
-            if (!((queue_info->queue_tail_pos <= i) ||
-                  (queue_info->queue_head_pos > i))) {
+            if (queue_info->queue_curr_len == 0) {
                 printf("%-15s", "0");
             } else {
                 printf("%-15p", queue_info->p_queue[i]);
